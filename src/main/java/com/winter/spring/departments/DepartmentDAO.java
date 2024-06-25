@@ -3,6 +3,8 @@ package com.winter.spring.departments;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,7 +18,7 @@ public class DepartmentDAO {
 	@Autowired // 주입하는 메서드
 	private DBConnection dbConnection;
 
-	public void getList() throws Exception {
+	public List<DepartmentDTO> getList() throws Exception {
 		Connection con = dbConnection.getConnection();
 		System.out.println(con);
 
@@ -30,17 +32,26 @@ public class DepartmentDAO {
 		// 최종 전송 및 결과를 처리하는 단계
 		ResultSet rs = st.executeQuery(); // st.exe가 최종 전송이고 그 결과물을 resueltset에 받겠다는 의미
 
+		ArrayList<DepartmentDTO> ar = new ArrayList<DepartmentDTO>();
 		while (rs.next()) { // 한개씩 읽으면서 꺼내줌
+
+			DepartmentDTO departmentDTO = new DepartmentDTO();
 			int id = rs.getInt("DEPARTMENT_ID");
 			String name = rs.getString("DEPARTMENT_NAME");
-			System.out.println(id + ":" + name);
+			departmentDTO.setDepartment_id(id);
+			departmentDTO.setDepartment_name(name);
+			departmentDTO.setManager_id(rs.getLong("MANAGER_ID"));
+			departmentDTO.setLocation_id(rs.getInt("LOCATION_ID"));
+			// DB의 row는 자바의 dto 하나와 같다
 
+			ar.add(departmentDTO);
 		}
 
 		// 연결한 자원 해제
 		rs.close();
 		st.close();
 		con.close();
+		return ar;
 
 	}
 

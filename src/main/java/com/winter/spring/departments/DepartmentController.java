@@ -1,7 +1,10 @@
 package com.winter.spring.departments;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -21,11 +24,19 @@ public class DepartmentController {
 
 	// 어떤 url이 왔을 때 수행하라는 어노테이션(설명과 실행)
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public void getList() throws Exception {
+	public void getList(Model model) throws Exception {
 		System.out.println("department list");
 //		return "department/list"; 리턴해주는 url이 없으면 url을 jsp주소로 대체한다. 
 
-		departmentService.getList();
+		List<DepartmentDTO> ar = departmentService.getList();
+
+//		ModelAndView mw = ModelAndView();
+//		mv.addObject("list", ar);
+//		
+//		return mv;
+
+		model.addAttribute("list", ar); // 속성명와 값을 함께 보냄
+
 	}
 
 }
