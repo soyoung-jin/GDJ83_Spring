@@ -3,15 +3,24 @@ package com.winter.spring.departments;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-@Repository // 클래스의 객체를 만들어달라는 어노테이션
+@Service // 클래스의 객체를 만들어달라는 어노테이션
 public class DepartmentService {
-	@Autowired // 만들어진 객체의 타입을 알아서 찾아주라는 어노테이션
+
+	@Autowired
 	private DepartmentDAO departmentDAO;
 
 	public List<DepartmentDTO> getList() throws Exception {
 		return departmentDAO.getList();
 	}
 
+	public DepartmentDTO getDetail(int num) throws Exception {
+		return departmentDAO.getDetail(num);
+	}
+
+	public int add(DepartmentDTO departmentDTO) throws Exception {
+		return 0;
+
+	}
 }

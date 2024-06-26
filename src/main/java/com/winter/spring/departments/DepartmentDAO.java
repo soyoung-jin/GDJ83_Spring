@@ -55,4 +55,60 @@ public class DepartmentDAO {
 
 	}
 
+	public DepartmentDTO getDetail(int num) throws Exception {
+//		1. db접속 
+		Connection con = dbConnection.getConnection();
+
+//		2. sql문 작성
+		String sql = "SELECT * FROM DEPARTMENTS WHERE DEPARTMENT_ID = ?";
+//		3. 미리 전송
+		PreparedStatement st = con.prepareStatement(sql);
+//		4. ? 세팅
+		st.setInt(1, num);
+
+		ResultSet rs = st.executeQuery();
+		DepartmentDTO departmentDTO = null;
+		if (rs.next()) {
+			departmentDTO = new DepartmentDTO();
+			departmentDTO.setDepartment_id(rs.getInt(1));
+			// rs.getInt(1)
+			departmentDTO.setDepartment_name(rs.getString(2));
+			departmentDTO.setManager_id(rs.getLong("MANAGER_ID"));
+			departmentDTO.setLocation_id(rs.getInt(4));
+
+		}
+
+		// 연결한 자원 해제
+		rs.close();
+		st.close();
+		con.close();
+		return departmentDTO;
+	}
+
+	int add(DepartmentDTO departmentDTO) throws Exception {
+		// 1. DB 연결
+		Connection con = dbConnection.getConnection();
+
+		// 2. Sql 생성
+		String sql = "INSERT INTO DEPARTMENTS " + " (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID)"
+				+ " values (DEPARTMENT_SEQ.NEXTVAL, ?, ?, ?)";
+
+		// 3. 미리전송
+		PreparedStatement st = con.prepareStatement(sql);
+
+		// 4. ? 세팅
+		st.setString(1, departmentDTO.getDepartment_name());
+		st.setLong(2, departmentDTO.getManager_id());
+		st.setInt(3, departmentDTO.getLocation_id());
+
+		// 5. 최종 전송 및 결과 처리- 쿼리 실행했을 때 돌려주는 값이 성공하면 0이상의 값, 실패하면 0이하의 값이기 때문에 int로 받는다.
+		int result = st.executeUpdate();
+
+		// 6. 자원 해제
+		st.close();
+		con.close();
+
+		return result;
+	}
+
 }

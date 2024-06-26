@@ -32,10 +32,50 @@ public class DepartmentController {
 
 //		ModelAndView mw = ModelAndView();
 //		mv.addObject("list", ar);
+//		my.setViewName("department/list");
 //		
 //		return mv;
 
 		model.addAttribute("list", ar); // 속성명와 값을 함께 보냄
+
+	}
+
+//	@RequestMapping(value = "detail", method = RequestMethod.GET)
+//	method = RequestMethod.GET 안쓰면 기본이 get
+
+	@RequestMapping("detail")
+	public String getDetail(Model model, int department_id) throws Exception {
+		// 파라미터 명과 일치하고 숫자형태가 되어 있는 애를 찾아서 넣어줌
+		// 형변환 할 필요없이 그대로 넣어주면 됨. 개발자들은 핵심 로직에만 신경쓰면 됨.
+		// @RequestParam(name = "num"), defaultValue="10"num으로 오는 애를 department_id로
+		// 보내달라는 뜻
+
+		DepartmentDTO departmentDTO = departmentService.getDetail(department_id);
+
+		String path = "commons/message";
+		if (departmentDTO != null) {
+
+			model.addAttribute("dto", departmentDTO);
+			path = "department/detail";
+
+		} else {
+			model.addAttribute("result", "부서를 찾을 수 없습니다.");
+			model.addAttribute("url", "./list");
+		}
+
+		return path;
+	}
+
+	// add
+	@RequestMapping(value = "add", method = RequestMethod.GET)
+	public void add() {
+	}
+
+	@RequestMapping(value = "add", method = RequestMethod.POST)
+	public void add2(String department_name) throws Exception {
+		DepartmentDTO departmentDTO = new DepartmentDTO();
+		departmentDTO.setDepartment_name(department_name);
+		departmentService.add(departmentDTO);
 
 	}
 
