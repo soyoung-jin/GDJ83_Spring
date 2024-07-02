@@ -1,7 +1,5 @@
 package com.winter.spring;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -24,14 +22,19 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
 
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+//		Robot robot = new Robot();
+//		RightArm rm = new RightArm();
+//
+//		robot.setRightArm(rm);
 
-		String formattedDate = dateFormat.format(date);
+		// 로봇은 오른팔에 의존적이다. = dependency
+		// 주입한다 injection
+		// 이 둘을 합쳐서 dependency injection 이라고 함. 의존성 주입
 
-		model.addAttribute("serverTime", formattedDate);
+		// 이 일들을 스프링 컨테이너한테 위임 및 요청함 - 이걸 어노테이션으로 설명해줌
+		// 이것을 IOC라고 함, inversion object
+		// 각 어노테이션이 모아진 것들을 spring pool이라고 함,이것을 관리하는 것이 컨테이너.
 
 		return "index";
 	}
