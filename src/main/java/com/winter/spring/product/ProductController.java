@@ -23,4 +23,9 @@ public class ProductController {
 		model.addAttribute("list", ar);
 
 	}
+
+	@RequestMapping(value = "add", method = RequestMethod.GET)
+	public void getadd() {
+
+	}
 }
