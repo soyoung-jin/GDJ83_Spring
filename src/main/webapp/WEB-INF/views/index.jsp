@@ -8,9 +8,7 @@
 </head>
 <body>
 
-	<h1>home</h1>
-	<a href="/department/list">부서목록</a>
-	<a href="location/list">도시목록</a>
-	
+	<h1>INDEX</h1>
+
 </body>
 </html>
