@@ -15,8 +15,8 @@ public class ProductService {
 		return productDAO.getList();
 	}
 
-	public ProductDTO getDetail(int p_code) throws Exception {
-		return productDAO.getDetail(p_code);
+	public ProductDTO getDetail(ProductDTO productdto) throws Exception {
+		return productDAO.getDetail(productdto);
 	}
 
 }

@@ -26,9 +26,9 @@ public class ProductController {
 
 	@RequestMapping("detail")
 	// @RequestParam(name = "num", defaultValue = "10") int department_id
-	public String getDetail(Model model, int p_code) throws Exception {
+	public String getDetail(Model model, ProductDTO productdto) throws Exception {
 
-		ProductDTO productDTO = productService.getDetail(p_code);
+		ProductDTO productDTO = productService.getDetail(productdto);
 
 		String path = "commons/message";
 
