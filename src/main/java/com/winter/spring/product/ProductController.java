@@ -28,7 +28,7 @@ public class ProductController {
 	// @RequestParam(name = "num", defaultValue = "10") int department_id
 	public String getDetail(Model model, int p_code) throws Exception {
 
-		ProductDTO productDTO = ProductService.getDetail(p_code);
+		ProductDTO productDTO = productService.getDetail(p_code);
 
 		String path = "commons/message";
 

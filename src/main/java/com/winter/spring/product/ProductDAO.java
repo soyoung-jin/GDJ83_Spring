@@ -21,8 +21,8 @@ public class ProductDAO {
 
 	}
 
-	public ProductDTO getDetail(ProductDTO productDTO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE + "getDetail", productDTO);
+	public ProductDTO getDetail(int p_code) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getDetail", p_code);
 		// 물음표 때문에 값을 더 보내줘야 하면 쉼표 하고 보낼 값하나 정해주면 됨
 		// 하나만 select
 
