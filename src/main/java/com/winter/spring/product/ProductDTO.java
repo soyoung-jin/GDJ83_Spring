@@ -1,17 +1,17 @@
 package com.winter.spring.product;
 
 public class ProductDTO {
-	private String p_code;
+	private int p_code;
 	private String ac_num;
 	private String ac_name;
 	private double interest;
 	private String script;
 
-	public String getP_code() {
+	public int getP_code() {
 		return p_code;
 	}
 
-	public void setP_code(String p_code) {
+	public void setP_code(int p_code) {
 		this.p_code = p_code;
 	}
 

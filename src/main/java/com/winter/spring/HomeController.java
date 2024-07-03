@@ -22,6 +22,7 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
+		logger.info("welcom home! The client locale is {}.", locale);
 
 //		Robot robot = new Robot();
 //		RightArm rm = new RightArm();
