@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- FQDN -->	
+	<!-- 해당 패키지, 해당 클래스의 객체를 만들겠다는 것 id는 참조변수 명과 비슷, 클래스명의 첫글자를 소문자로 만듬-->
+	<bean class="com.winter.spring.robot.LeftArm" id = "leftArm"></bean>
+	<!-- 여까지 하면 객체 완성함 -->
+	
+	<bean class="com.winter.spring.robot.RightArm" id = "rightArm"></bean>
+	
+	<!-- Wheel에 매개변수 있는 생성자가 있어서, 디폴트 생성자가 없어짐, 근데 얘네는 기본 생성자를 호출하면서 객체를 만들기 떄문에 에러 -->
+	<!-- bean class="com.winter.spring.robot.Wheel" id = "wheel"></bean> -->
+	
+	<bean class="com.winter.spring.robot.Wheel" id = "wheel">
+		<!-- 1.인덱스 번호로 매개변수 구분
+			<constructor-arg index="0" value="56"></constructor-arg>
+			<constructor-arg index="1" value="LG"></constructor-arg>
+			<constructor-arg index="2" value="5"></constructor-arg> 
+		-->
+		
+		<!-- 2.타입으로 구분하는 방법 타입이 다 달라야 하니까 겹치면 안되서 잘 안씀
+			<constructor-arg type="int" value="56"></constructor-arg> -->
+		
+		<!-- 3.매개변수 이름으로 구분하는 방법 -->
+		
+		<constructor-arg name="size" value="56"></constructor-arg>
+		<constructor-arg name="brand" value="56"></constructor-arg>
+		<constructor-arg name="count" value="56"></constructor-arg>
+		
+		
+	</bean>
+	
+	<bean class="com.winter.spring.robot.Robot" id = "robot">
+		<!-- setter의 이름을 name에 적는다. -->
+		<!-- value는 primitive 타입의 값과 String값 -->
+		<!-- ref는 reference 타입의 값 -->
+		<property name="company" value="Doosan"> </property>
+		<property name="age" value="20"> </property>
+		<property name="leftArm" ref="leftArm"> </property>
+		<property name="rightArm" ref="rightArm"> </property>
+	
+	</bean>
+</beans>
