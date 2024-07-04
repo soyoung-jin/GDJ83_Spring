@@ -6,14 +6,34 @@
   <mapper namespace="com.winter.spring.product.ProductDAO">
   		<!-- >>> namespace는 중복되면 안됨.클래스명은 중복될 수 있으니까 패키지명으로 작성함 -->
   		
-  		<select id="getList" resultType="com.winter.spring.product.ProductDTO">
+  		<select id="getList" resultType="ProductDTO">
   			SELECT * FROM PRODUCTS
   			<!-- 세미콜론 찍지말기! 오류뜬다 -->
   		</select>
   		
-  		<select id="getDetail" resultType="com.winter.spring.product.ProductDTO" parameterType="com.winter.spring.product.ProductDTO">
+  		<select id="getDetail" resultType="ProductDTO" parameterType="ProductDTO">
   			SELECT * FROM PRODUCTS WHERE P_CODE = #{p_code}
   		</select>
+  		
+  		<insert id ="add" parameterType = "ProductDTO">
+   			INSERT INTO PRODUCTS
+			VALUES (USER01CODE_SEQ.NEXTVAL, #{p_code}, #{ac_num},#{ac_name},#{interest}, #{script})
+		</insert>
+		
+		<update id="update" parameterType="ProductDTO">
+			UPDATE PRODUCTS SET
+				P_CODE = #{p_code}
+				,AC_NUM = #{ac_num}
+				,AC_NAME = #{ac_name}
+				,INTEREST = #{interest}
+				,SCRIPT = #{script}
+			WHERE P_CODE = #{p_code}
+
+		</update>
+		
+		<delete id="delete"  parameterType="ProductDTO">
+  			DELETE PRODUCTS WHERE P_CODE=#{p_code}
+  		</delete>
   		
   		
   </mapper>
