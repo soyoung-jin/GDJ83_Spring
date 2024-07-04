@@ -1,6 +1,7 @@
 package com.winter.spring;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,9 +22,12 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest request) {
-
+		System.out.println("go");
+		// 내장객체
 		// 하위 -> 상위O
 		// 상위 -> 하위 X
+		HttpSession session = request.getSession();
+//		session.getServletContext();
 
 //		Cookie[] cookies = request.getCookies();
 //		for (Cookie c : cookies) {

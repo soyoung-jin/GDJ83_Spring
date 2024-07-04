@@ -14,10 +14,12 @@
 	
 <div class="container-fluid mt-5">
 	<div class="row justify-content-center" >
-		<div>
-			<h3>welcome!</h3>
-		</div>
+		<c:if test="${not empty member}">
 	
+			<div>
+				<h3>${member.name} welcome!</h3>
+			</div>
+		</c:if>
 	 <div class="col-6">
 			<div id="carouselExampleIndicators" class="carousel slide">
 	  <div class="carousel-indicators">

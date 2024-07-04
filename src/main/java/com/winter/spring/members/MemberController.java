@@ -1,12 +1,11 @@
 package com.winter.spring.members;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -29,22 +28,27 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "login", method = RequestMethod.GET) // 기억하고 있는 쿠키를 출력해서 jsp로 보냄
-	public String login(HttpServletRequest request,
-			@CookieValue(name = "remember", required = false, defaultValue = "") String value) throws Exception {
-
-		Cookie[] cookies = request.getCookies();
-		for (Cookie c : cookies) {
-			if (c.getName().equals("remeber")) {
-				request.setAttribute("id", c.getValue());
-			}
-
-		}
-		return "redirect:/";
+	public void login() throws Exception {
 
 	}
+//	@RequestMapping(value = "login", method = RequestMethod.GET) // 기억하고 있는 쿠키를 출력해서 jsp로 보냄
+//	public String login(HttpServletRequest request,
+//			@CookieValue(name = "remember", required = false, defaultValue = "") String value) throws Exception {
+//
+//		Cookie[] cookies = request.getCookies();
+//		for (Cookie c : cookies) {
+//			if (c.getName().equals("remeber")) {
+//				request.setAttribute("id", c.getValue());
+//			}
+//
+//		}
+//		return "redirect:/";
+//
+//	}
 
 	@RequestMapping(value = "login", method = RequestMethod.POST) // 쿠키를 만들어서 집어넣음
-	public String login(MemberDTO memberDTO, HttpServletResponse response, String remember) throws Exception {
+	public String login(MemberDTO memberDTO, HttpServletResponse response, String remember, HttpSession session)
+			throws Exception {
 
 		if (remember != null) {
 			Cookie cookie = new Cookie("remember", memberDTO.getId());
@@ -58,7 +62,7 @@ public class MemberController {
 
 		memberDTO = memberService.login(memberDTO);
 		if (memberDTO != null) {
-
+			session.setAttribute("member", memberDTO);
 		} else {
 
 		}

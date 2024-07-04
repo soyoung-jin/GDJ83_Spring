@@ -17,7 +17,7 @@
 			<form method="post">
 				<div class="mb-3">
     	            <label for="id" class="form-label">ID</label>
-                    <input type="text" class="form-control" value="${id}id="id" name="id">
+                    <input type="text" class="form-control" value="${id}" name="id">
                 </div>
                 <div class="mb-3">
                      <label for="phone" class="form-label">PHONE</label>
