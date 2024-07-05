@@ -4,7 +4,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-  <mapper namespace="com.winter.app.members.MemberDAO">
+  <mapper namespace="com.winter.spring.members.MemberDAO">
   	<insert id="join" parameterType="MemberDTO">
   		INSERT INTO USERS(ID, PHONE, PW, NAME, SS_NUM, EMAIL )
   		VALUES (#{id}, #{phone}, #{pw}, #{name}, #{ss_num}, #{email})
