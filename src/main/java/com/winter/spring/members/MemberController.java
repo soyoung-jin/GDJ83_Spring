@@ -78,8 +78,40 @@ public class MemberController {
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {
 		session.invalidate(); // session의 유지시간을 0으로
+
+//		session.setAttribute("member", null);
+//		session.removeAttribute("member");
+//		session.isNew();
 		return "redirect:/";
 
+	}
+
+	@RequestMapping(value = "mypage", method = RequestMethod.GET)
+	public void mypage(HttpSession session, Model model) throws Exception {
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		memberDTO = memberService.login(memberDTO);
+		model.addAttribute("mypage", memberDTO);
+	}
+
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public void update(HttpSession session, Model model) throws Exception {
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		memberDTO = memberService.login(memberDTO);
+		model.addAttribute("mypage", memberDTO);
+
+	}
+
+	@RequestMapping(value = "update", method = RequestMethod.POST) // 쿠키를 만들어서 집어넣음
+	public String update(MemberDTO memberDTO, HttpSession session) throws Exception {
+		// 아이디가 세션에 저장되어 있어서 세션 불러옴
+		MemberDTO user = (MemberDTO) session.getAttribute("member");
+		memberDTO.setId(user.getId());
+		int result = memberService.update(memberDTO);
+
+		if (result > 0) {
+			session.setAttribute("member", memberDTO);
+		}
+		return "redirect:/";
 	}
 
 }

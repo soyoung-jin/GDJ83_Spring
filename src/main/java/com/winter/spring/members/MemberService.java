@@ -1,5 +1,7 @@
 package com.winter.spring.members;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,17 @@ public class MemberService {
 			return null;
 		}
 		return result;
+	}
+
+	public List<MemberDTO> mypage(MemberDTO memberDTO) throws Exception {
+		List<MemberDTO> result = memberDAO.mypage(memberDTO);
+		// 새로 조회한게 result에 있음
+
+		return result;
+	}
+
+	public int update(MemberDTO memberDTO) throws Exception {
+		return memberDAO.update(memberDTO);
 	}
 
 }

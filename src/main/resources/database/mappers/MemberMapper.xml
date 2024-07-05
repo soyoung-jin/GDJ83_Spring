@@ -16,4 +16,18 @@
   	
   	</select>
   	
+  	<select id="mypage" parameterType="MemberDTO" resultType="MemberDTO">
+  	
+  		SELECT * FROM USERS
+  	
+  	</select>
+  	
+  	<select id="update" parameterType="MemberDTO">
+  	
+  		UPDATE USERS SET 
+  		ID=#{id}, PHONE=#{phone}, PW=#{pw}, NAME=#{name}, SS_NUM=#{ss_num},EMAIL= #{email}
+  		WHERE ID=#{id}
+  	
+  	</select>
+  	
   </mapper>
