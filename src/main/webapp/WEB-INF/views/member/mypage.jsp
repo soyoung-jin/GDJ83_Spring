@@ -23,6 +23,13 @@
 		</div>
 		<div>
 			<a href="./update" class="btn btn-primary">회원수정</a>
+			<form action="./delete" method="post">
+				<div>
+				<button class= "btn btn-danger">회원탈퇴</button>
+		
+				</div>
+			</form>
+	
 		
 		
 		</div>

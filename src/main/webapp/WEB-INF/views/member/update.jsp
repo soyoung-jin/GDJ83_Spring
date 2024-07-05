@@ -43,14 +43,10 @@
                      <label for="email" class="form-label">EMAIL</label>
                      <input type="text" class="form-control" value="${member.email}" id="email" name="email">
                  </div>
-                 <div>
-			<button class="btn btn-primary">수정</button>
-		
-		
-		</div>
                  
+				<button class="btn btn-primary">수정</button>
 	
-				
+
 			</form>	
 		</div>
 	

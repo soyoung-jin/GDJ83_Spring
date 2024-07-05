@@ -41,6 +41,7 @@
 			<div class="row">
 			
 				<div>
+					<a href="" class="btn btn-primary">상품 가입</a>
 					<a href="./update?p_code=${dto.p_code}" class="btn btn-danger">상품 수정</a>
 					<a href="./delete?p_code=${dto.p_code}" class="btn btn-primary">상품 삭제</a>
 				
