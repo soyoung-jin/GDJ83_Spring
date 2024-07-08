@@ -7,7 +7,7 @@
   	<typeAliases>
   		<typeAlias type="com.winter.spring.product.ProductDTO" alias="ProductDTO"/>
   		<typeAlias type="com.winter.spring.members.MemberDTO" alias="MemberDTO"/>
-
+	<typeAlias type="com.winter.spring.accounts.AccountDTO" alias="AccountDTO"/>
   	</typeAliases>
   
   
