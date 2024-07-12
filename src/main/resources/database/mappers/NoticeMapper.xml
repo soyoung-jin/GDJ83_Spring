@@ -2,10 +2,13 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-  <mapper namespace="com.winter.spring.accounts.AccountDAO">
-  	<insert id="add" parameterType="AccountDTO">
-  		
-  	</insert>
+  
+  <mapper namespace="com.winter.spring.notice.NoticeDAO">
+  	<select id="getList" resultType="NoticeDTO">
+  		SELECT * FROM NOTICE
   	
+  	</select>
+  	
+  
+  
   </mapper>
