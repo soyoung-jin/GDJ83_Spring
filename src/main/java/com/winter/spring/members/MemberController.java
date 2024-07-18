@@ -33,6 +33,7 @@ public class MemberController {
 	@RequestMapping(value = "login", method = RequestMethod.GET) // 기억하고 있는 쿠키를 출력해서 jsp로 보냄
 	public void login(HttpServletRequest request, Model model,
 			@CookieValue(name = "remember", required = false, defaultValue = "") String value) {
+		
 		model.addAttribute("id", value);
 
 	}
@@ -52,7 +53,7 @@ public class MemberController {
 //	}
 
 	@RequestMapping(value = "login", method = RequestMethod.POST) // 쿠키를 만들어서 집어넣음
-	public String login(MemberDTO memberDTO, HttpServletResponse response, String remember, HttpSession session)
+	public String login(MemberDTO memberDTO, HttpServletResponse response, HttpServletRequest request, String remember, HttpSession session)
 			throws Exception {
 
 		if (remember != null) {
@@ -77,6 +78,7 @@ public class MemberController {
 
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {
+		
 		session.invalidate(); // session의 유지시간을 0으로
 
 //		session.setAttribute("member", null);
