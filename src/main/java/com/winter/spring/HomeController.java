@@ -22,6 +22,7 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest request) {
+		System.out.println("study conflict");
 		System.out.println("go");
 		// 내장객체
 		// 하위 -> 상위O
