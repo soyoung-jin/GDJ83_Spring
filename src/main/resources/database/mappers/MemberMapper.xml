@@ -12,7 +12,8 @@
   	
   	<select id="login" parameterType="MemberDTO" resultType="MemberDTO">
   	
-  		SELECT * FROM USERS WHERE ID=#{id}
+  		SELECT * FROM USERS 
+  		WHERE ID=#{id}
   	
   	</select>
   	
