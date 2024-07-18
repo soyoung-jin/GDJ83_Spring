@@ -11,7 +11,7 @@ public class MemberDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE = "com.winter.app.members.MemberDAO.";
+	private final String NAMESPACE = "com.winter.spring.members.MemberDAO.";
 
 	public int join(MemberDTO memberDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE + "join", memberDTO);
