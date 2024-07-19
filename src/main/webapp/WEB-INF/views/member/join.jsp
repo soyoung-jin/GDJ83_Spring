@@ -16,7 +16,7 @@
 <div class="container-fluid mt-5">
 	<div class="row justify-content-center">
 		<div class="col-md-6">
-			<form method="post" id="form">
+			<form method="post" id="form" enctype="multipart /form-data">
 				<div class="mb-3">
     	            <label for="id" class="form-label">ID</label>
                     <input id="id" type="text" class="form-control" value="${id}" name="id">
