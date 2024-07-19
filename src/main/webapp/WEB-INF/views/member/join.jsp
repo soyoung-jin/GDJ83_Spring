@@ -16,38 +16,57 @@
 <div class="container-fluid mt-5">
 	<div class="row justify-content-center">
 		<div class="col-md-6">
-			<form method="post">
+			<form method="post" id="form">
 				<div class="mb-3">
     	            <label for="id" class="form-label">ID</label>
-                    <input type="text" class="form-control" value="${id}" name="id">
+                    <input id="id" type="text" class="form-control" value="${id}" name="id">
                 </div>
                 <div class="mb-3">
                      <label for="phone" class="form-label">PHONE</label>
-                     <input type="phone" class="form-control" id="phone" name="phone">
+                     <input id="phone" type="phone" class="form-control ch" id="phone" name="phone">
                  </div>
 
 	             <div class="mb-3">
     	             <label for="pw" class="form-label">PASSWORD</label>
-                     <input type="text" class="form-control" id="pw" name="pw">
+                     <input id="pw" type="text" class="form-control ch" name="pw">
+                     <div id="password-error"></div>
+
                  </div>
+                 
+                 <div class="mb-3">
+                    <label for="pw" class="form-label">PASSWORD</label>
+                    <input id="pwCheck" type="text" class="form-control ch"  name="pwCheck">
+                    <div id="password-eqerror"></div>
+
+                </div>
+        
+    
 
                  <div class="mb-3">
 	                 <label for="name" class="form-label">NAME</label>
-                     <input type="text" class="form-control" id="name" name="name">
+                     <input id="name" type="text" class="form-control ch" id="name" name="name">
                  </div>
 
                  <div class="mb-3">
                      <label for="ss_num" class="form-label">SOCIAL SECURITY NUMBER</label>
-                     <input type="text" class="form-control" id="ss_num" name="ss_num">
+                     <input id="ssNum" type="text" class="form-control ch" id="ss_num" name="ss_num">
                  </div>
 
                  <div class="mb-3">
                      <label for="email" class="form-label">EMAIL</label>
-                     <input type="text" class="form-control" id="email" name="email">
+                     <input id="email" type="text" class="form-control ch" id="email" name="email">
                  </div>
+		
+				<div class="mb-3">
+				    <button id="fileAdd" type="button" class="btn btn-primary">사진파일추가</button>
+                </div>
+				
+				<div id="result">
+
+                </div>
                  
 		 		<div class="mb-3">
-					<button class="btn btn-primary">회원가입</button>
+					<button id="btn" type="button" class="btn btn-primary">회원가입</button>
 				</div>
 				
 			</form>	
@@ -58,5 +77,8 @@
 </div>
 <c:import url="/WEB-INF/views/template/footer.jsp"></c:import>
 <c:import url="/WEB-INF/views/template/scripts.jsp"></c:import>
+<script type="text/javascript" src="/resources/js/commons/files.js"></script>
+<script type="text/javascript" src="/resources/js/member/memberJoinCheck.js"></script>
+
 </body>
 </html> 

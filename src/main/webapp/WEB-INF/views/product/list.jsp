@@ -52,10 +52,9 @@
 				<a class="btn btn-outline-primary text-uppercase" href="./add">상품등록</a>
 			</div>
 
-
-		</div>
 		</div>
 <c:import url="/WEB-INF/views/template/footer.jsp"></c:import>
 <c:import url="/WEB-INF/views/template/scripts.jsp"></c:import>
+
 </body>
 </html>
