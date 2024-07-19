@@ -39,6 +39,16 @@
 				  	<textarea name="script" class="form-control" id="interest" rows="3">${dto.script}</textarea>
 				</div>
 				
+				
+				<div class="mb-3">
+				<button id="fileAdd" type="button" class="btn btn-primary">파일추가</button>
+				</div>
+		
+				<div id="result">
+		
+				</div>
+				
+				
 				<div class="mb-3">
 					<button class="btn btn-outline-primary">등록</button>
 				</div>
@@ -53,6 +63,10 @@
 
 <c:import url="/WEB-INF/views/template/footer.jsp"></c:import>
 <c:import url="/WEB-INF/views/template/scripts.jsp"></c:import>
+<script type="text/javascript" src="../resources/js/commons/files.js"></script>
+<script>
+	setMax(5);
+</script>
 
 </body>
 </html> 
