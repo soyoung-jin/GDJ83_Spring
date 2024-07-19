@@ -13,6 +13,9 @@
 </head>
 <body>
 <c:import url="./template/nav.jsp"></c:import>
+
+
+
 <c:import url="./template/footer.jsp"></c:import>
 <c:import url="./template/scripts.jsp"></c:import>
 </body>
